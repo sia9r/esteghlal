@@ -1,0 +1,43 @@
+{
+
+"name": "جواهری استقلال",
+
+"short_name": "استقلال",
+
+"description": "اپلیکیشن محاسبه قیمت طلای ساخته‌شده، شمش و پارسیان با قابلیت انتخاب عیار و وزن دلخواه.",
+
+"start_url": "./index.html",
+
+"display": "standalone",
+
+"orientation": "portrait",
+
+"background_color": "#fff7e6",
+
+"theme_color": "#b8860b",
+
+"icons": [
+
+{
+
+"src": "assets/images/icon-192.png",
+
+"sizes": "192x192",
+
+"type": "image/png"
+
+},
+
+{
+
+"src": "assets/images/icon-512.png",
+
+"sizes": "512x512",
+
+"type": "image/png"
+
+}
+
+]
+
+}
