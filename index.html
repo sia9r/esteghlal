@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<!-- font preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="assets/images/logo.png">
+<link rel="manifest" href="/manifest.json"> <!-- اختیاری؛ اگر می‌سازی -->
+
+<!-- external CSS -->
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<meta charset="utf-8" />
+<!-- font preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="assets/images/logo.png">
+<link rel="manifest" href="/manifest.json"> <!-- اختیاری؛ اگر می‌سازی -->
+<!-- external CSS -->
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>جواهری استقلال</title>
+<!-- font preconnect for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="icon" href="assets/images/logo.png">
+<link rel="manifest" href="/manifest.json"> <!-- اختیاری؛ اگر می‌سازی -->
+<!-- external CSS -->
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700;900&display=swap');
+  :root{
+    --bg1:#fff7e6;--bg2:#f9e6b3;
+    --gold:#b8860b;--gold-strong:#d4af37;
+    --card-bg: rgba(255,255,255,0.98);
+    --muted:#6b4f00;--accent:#f9d976;--text:#222;
+  }
+  html,body{height:100%;margin:0;padding:0;font-family:'Vazirmatn',Tahoma,sans-serif;background:linear-gradient(135deg,var(--bg1),var(--bg2));color:var(--text)}
+  .wrap{max-width:1100px;margin:18px auto;padding:18px;box-sizing:border-box}
+  header.top{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+  .brand{display:flex;align-items:center;gap:12px}
+  .logo{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--accent),#f39c12);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+  h1{margin:0;font-size:20px;color:var(--gold);font-weight:900}
+  .top-controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+  .price-input{background:var(--card-bg);border-radius:12px;padding:10px 12px;display:flex;gap:8px;align-items:center;border:2px solid rgba(212,175,55,0.14)}
+  .price-input label{font-weight:800;color:var(--muted);font-size:13px}
+  .price-input input{width:140px;padding:8px 10px;border-radius:8px;border:1px solid #ddd;font-weight:900;font-size:15px;text-align:center;background:#fff}
+  .tiny-toggle{width:44px;height:24px;border-radius:999px;background:#c0392b;position:relative;cursor:pointer}
+  .tiny-toggle::before{content:"";position:absolute;left:2px;top:2px;width:20px;height:20px;background:#fff;border-radius:50%;transition:transform .25s}
+  .tiny-toggle.active{background:#27ae60}
+  .tiny-toggle.active::before{transform:translateX(20px)}
+  .tabs{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+  .tab{padding:10px 14px;border-radius:12px;background:transparent;border:2px solid transparent;font-weight:900;cursor:pointer;color:var(--muted)}
+  .tab.active{background:linear-gradient(90deg,var(--accent),#f39c12);color:#fff;box-shadow:0 10px 30px rgba(240,190,60,0.12)}
+  .panel{background:var(--card-bg);border-radius:18px;padding:18px;box-shadow:0 18px 48px rgba(0,0,0,0.14);overflow:hidden}
+  .panel-grid{display:grid;grid-template-columns:1fr 420px;gap:18px}
+  @media(max-width:980px){.panel-grid{grid-template-columns:1fr}}
+  .content{padding:6px}
+  .controls{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px;align-items:center}
+  .field{background:#fffbe6;border:2px solid var(--gold-strong);padding:10px;border-radius:12px;min-width:160px;flex:1}
+  .field label{display:block;font-weight:800;color:var(--muted);font-size:14px;margin-bottom:8px;text-align:right}
+  .field input,.field select{width:100%;padding:10px;border-radius:10px;border:1px solid #e6d6a0;font-weight:900;font-size:16px;text-align:center;background:transparent}
+  .main-btn{background:linear-gradient(90deg,var(--accent),#f39c12);border:none;color:#fff;padding:12px 16px;border-radius:12px;font-weight:900;font-size:16px;cursor:pointer}
+  .side{padding:12px;border-radius:12px;background:linear-gradient(180deg,#fff,#fff9e6);border:2px solid rgba(212,175,55,0.06)}
+  .summary .big{font-size:22px;font-weight:900;color:var(--gold)}
+  .table{margin-top:12px;border-radius:12px;overflow:hidden;border:1px solid rgba(0,0,0,0.05)}
+  table{width:100%;border-collapse:collapse;font-weight:800}
+  thead th{background:#fff8e6;color:var(--muted);padding:10px 12px;text-align:right;font-size:14px}
+  tbody td{padding:10px 12px;border-top:1px solid rgba(0,0,0,0.04);text-align:right;font-size:15px}
+  tbody tr:hover{background:linear-gradient(90deg, rgba(255,250,220,0.6), rgba(255,250,220,0.4))}
+  .price-cell{color:var(--gold);font-weight:900;font-size:15px;min-width:160px;text-align:right}
+  .result-card{margin-top:8px;padding:14px;border-radius:12px;background:#fff8e6;border:1px solid rgba(212,175,55,0.06)}
+  .big-number{font-size:28px;font-weight:900;color:var(--gold);text-align:center}
+  .timestamp{font-size:13px;color:#666;margin-left:8px}
+  footer{margin-top:18px;text-align:center;color:#666;font-weight:800;font-size:13px}
+  @media(max-width:640px){.price-input input{width:110px}.panel-grid{grid-template-columns:1fr}.side{order:2}}
+  .dark{--bg1:#0f0f12;--bg2:#121217;--card-bg: rgba(6,6,6,0.6);--gold:#ffd973;--gold-strong:#f0c27b;--text:#eee;--muted:#f0c27b;background:linear-gradient(135deg,var(--bg1),var(--bg2))}
+</style>
+<!-- main javascript (defer or placed before </body>) -->
+<script defer src="assets/js/app.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <header class="top" role="banner">
+    <div class="brand">
+      <div class="logo">G</div>
+      <div>
+        <h1>داشبورد قیمت طلا</h1>
+        <div style="font-size:12px;color:#666;font-weight:800">پارسیان · شمش · محاسبه </div>
+      </div>
+    </div>
+
+    <div class="top-controls">
+      <div class="price-input" title="قیمت ۱۸ و ۲۴ را وارد کنید (یکی را وارد کنید؛ دیگری اتوماتیک می‌شود)">
+        <label>۱۸ عیار</label>
+        <input id="price18" inputmode="numeric" placeholder="مثلاً 10,000,000" />
+        <label>۲۴ عیار</label>
+        <input id="price24" inputmode="numeric" placeholder="مثلاً 13,333,333" />
+      </div>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div id="themeToggle" class="tiny-toggle" title="تاریک/روشن" role="switch" aria-checked="false"></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:8px">
+          <div id="timeToggleTop" class="tiny-toggle" title="نمایش زمان" role="switch" aria-checked="false"></div>
+          <div id="topTimestamp" class="timestamp" style="display:none">—</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="مودها">
+    <div class="tab active" data-mode="parsian">پارسیان</div>
+    <div class="tab" data-mode="shamsh">شمش</div>
+    <div class="tab" data-mode="fabric">محاسبه طلا</div>
+  </div>
+
+  <section class="panel" role="main">
+    <div class="panel-grid">
+      <div class="content">
+
+        <!-- PARSIAN -->
+        <div class="mode" id="parsian" data-mode="parsian">
+          <div class="controls">
+            <div class="field">
+              <label>عیار محاسبه (پیش‌فرض ۱۸)</label>
+              <select id="parsianPurity">
+                <option value="18" selected>۱۸</option><option value="19">۱۹</option><option value="20">۲۰</option>
+                <option value="21">۲۱</option><option value="22">۲۲</option><option value="23">۲۳</option>
+                <option value="24">۲۴</option><option value="custom">دلخواه</option>
+              </select>
+              <input id="parsianPurityCustom" placeholder="عیار دلخواه" style="display:none;margin-top:8px" />
+            </div>
+
+            <div class="field" style="min-width:150px">
+              <div style="display:flex;align-items:center;justify-content:center;">
+                <!-- toggle پنهان: پیش‌فرض خاموش -> tolerance اعمال نخواهد شد -->
+                <div id="parsianTolToggle" class="tiny-toggle" role="switch" aria-checked="false" title="تلورانس پنهان"></div>
+                <select id="parsianTol" style="display:none;padding:8px;background:#fffbe6;border-radius:8px;border:1px solid var(--gold-strong);font-weight:800;margin-right:8px">
+                  <option value="20000">۲۰٬۰۰۰</option><option value="50000">۵۰٬۰۰۰</option>
+                  <option value="70000">۷۰٬۰۰۰</option><option value="100000">۱۰۰٬۰۰۰</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" style="min-width:180px">
+              <label>فیلتر وزن دلخواه (گرم)</label>
+              <input id="parsianCustomWeight" placeholder="مثلاً 1.2">
+            </div>
+
+            <div style="flex:0 0 140px;display:flex;align-items:center;">
+              <button class="main-btn" id="parsianCalc">محاسبه</button>
+            </div>
+          </div>
+
+          <div class="table" id="parsianTableWrap" aria-live="polite"></div>
+        </div>
+
+        <!-- SHAMSH -->
+        <div class="mode" id="shamsh" data-mode="shamsh" style="display:none">
+          <div class="controls">
+            <div class="field">
+              <label>عیار محاسبه (پیش‌فرض ۲۴)</label>
+              <select id="shamshPurity">
+                <option value="18">۱۸</option><option value="19">۱۹</option><option value="20">۲۰</option>
+                <option value="21">۲۱</option><option value="22">۲۲</option><option value="23">۲۳</option>
+                <option value="24" selected>۲۴</option><option value="custom">دلخواه</option>
+              </select>
+              <input id="shamshPurityCustom" placeholder="عیار دلخواه" style="display:none;margin-top:8px" />
+            </div>
+
+            <div class="field" style="min-width:150px">
+              <div style="display:flex;align-items:center;justify-content:center;">
+                <div id="shamshTolToggle" class="tiny-toggle" role="switch" aria-checked="false" title="تلورانس پنهان"></div>
+                <select id="shamshTol" style="display:none;padding:8px;background:#fffbe6;border-radius:8px;border:1px solid var(--gold-strong);font-weight:800;margin-right:8px">
+                  <option value="20000">۲۰٬۰۰۰</option><option value="50000">۵۰٬۰۰۰</option>
+                  <option value="70000">۷۰٬۰۰۰</option><option value="100000">۱۰۰٬۰۰۰</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field" style="min-width:180px">
+              <label>فیلتر وزن دلخواه (گرم)</label>
+              <input id="shamshCustomWeight" placeholder="مثلاً 1.0">
+            </div>
+
+            <div style="flex:0 0 140px;display:flex;align-items:center;">
+              <button class="main-btn" id="shamshCalc">محاسبه</button>
+            </div>
+          </div>
+
+          <div class="table" id="shamshTableWrap" aria-live="polite"></div>
+        </div>
+
+        <!-- FABRICATION -->
+        <div class="mode" id="fabric" data-mode="fabric" style="display:none">
+          <div class="controls">
+            <div class="field">
+              <label>وزن (گرم)</label>
+              <input id="fabWeight" placeholder="مثلاً 2.5">
+            </div>
+            <div class="field">
+              <label>عیار قیمت (استفاده از قیمت‌های بالا)</label>
+              <select id="fabPurity">
+                <option value="18" selected>۱۸</option><option value="19">۱۹</option><option value="20">۲۰</option>
+                <option value="21">۲۱</option><option value="22">۲۲</option><option value="23">۲۳</option>
+                <option value="24">۲۴</option><option value="custom">دلخواه</option>
+              </select>
+              <input id="fabPurityCustom" placeholder="عیار دلخواه" style="display:none;margin-top:8px" />
+            </div>
+            <div class="field">
+              <label>درصد اجرت</label>
+              <input id="fabWage" placeholder="مثلاً 10" value="10">
+            </div>
+            <div class="field">
+              <label>درصد سود</label>
+              <input id="fabProfit" placeholder="مثلاً 7" value="7">
+            </div>
+            <div style="flex:0 0 140px;display:flex;align-items:center;">
+              <button class="main-btn" id="fabCalc">محاسبه</button>
+            </div>
+          </div>
+
+          <div class="result-card" aria-live="polite">
+            <div class="big-number" id="fabFinal">—</div>
+            <div style="display:flex;gap:8px;margin-top:10px;justify-content:space-around">
+              <div class="meta">قیمت خالص: <span id="fabPure">—</span></div>
+              <div class="meta">اجرت: <span id="fabWageOut">—</span></div>
+              <div class="meta">سود: <span id="fabProfitOut">—</span></div>
+            </div>
+            <div style="display:flex;gap:8px;margin-top:8px;justify-content:space-around">
+              <div class="meta">مالیات: <span id="fabTax">—</span></div>
+              <div class="meta">تلورانس: <span id="fabTol">—</span></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- right column -->
+      <aside class="side">
+        <div class="summary">
+          <div class="big">قیمت فعال: <span id="activePriceDisplay">—</span></div>
+          <div class="meta">عیار فعال و تبدیل خودکار</div>
+          <div class="meta" style="font-size:13px;color:#666">نکته: برای محاسبه از قیمت‌های بالای صفحه استفاده می‌شود.</div>
+          <div style="height:1px"></div>
+          <div style="margin-top:8px;display:flex;align-items:center;gap:8px">
+            <div class="meta">آخرین محاسبه:</div><div id="topTimestamp" class="timestamp">—</div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <footer>جواهری استقلال.</footer>
+  </section>
+</div>
+
+<script>
+/* ---------- Helpers ---------- */
+function fmt(n){ try{ return Number(n).toLocaleString('en-US'); }catch(e){return n} }
+function unfmt(str){ if(str===undefined||str===null) return NaN; let s = String(str).replace(/,/g,'').trim(); if(s==='') return NaN; return Number(s); }
+
+/* ---------- Price sync (18 ↔ 24) ---------- */
+const price18Input = document.getElementById('price18');
+const price24Input = document.getElementById('price24');
+function syncFrom18(){ const v=unfmt(price18Input.value); if(isNaN(v)){ price24Input.value=''; updateActivePriceDisplay(); return; } const p24 = v*(24/18); price24Input.value = fmt(Math.round(p24)); updateActivePriceDisplay(); }
+function syncFrom24(){ const v=unfmt(price24Input.value); if(isNaN(v)){ price18Input.value=''; updateActivePriceDisplay(); return; } const p18 = v*(18/24); price18Input.value = fmt(Math.round(p18)); updateActivePriceDisplay(); }
+price18Input.addEventListener('input', (e)=>{ const raw = e.target.value.replace(/,/g,''); if(raw===''||isNaN(Number(raw))){ price18Input.value = raw; return; } price18Input.value = fmt(Number(raw)); syncFrom18(); });
+price24Input.addEventListener('input', (e)=>{ const raw = e.target.value.replace(/,/g,''); if(raw===''||isNaN(Number(raw))){ price24Input.value = raw; return; } price24Input.value = fmt(Number(raw)); syncFrom24(); });
+
+/* ---------- tabs ---------- */
+const tabs = document.querySelectorAll('.tab');
+const modes = document.querySelectorAll('.mode');
+tabs.forEach(t=> t.addEventListener('click', ()=>{
+  tabs.forEach(x=>x.classList.remove('active')); t.classList.add('active');
+  const m = t.dataset.mode; modes.forEach(md=> md.style.display = (md.dataset.mode === m ? '' : 'none'));
+  updateActivePriceDisplay();
+}));
+
+/* ---------- weights ---------- */
+const weights = [0.05,0.07,0.100,0.150,0.200,0.250,0.300,0.350,0.400,0.450,0.500,0.550,0.600,0.650,0.700,0.750,0.800,0.850,0.900,0.950,1.0,1.100,1.150,1.200,1.250,1.300,1.350,1.400,1.450,1.500,1.550,1.600,1.650,1.700,1.750,1.800,1.850,1.900,1.950,2.00,3.00,4.00];
+
+/* ---------- PARSIAN ---------- */
+const parsianCalcBtn = document.getElementById('parsianCalc');
+const parsianTolToggle = document.getElementById('parsianTolToggle');
+const parsianTolSelect = document.getElementById('parsianTol');
+const parsianTableWrap = document.getElementById('parsianTableWrap');
+const parsianPurity = document.getElementById('parsianPurity');
+const parsianPurityCustom = document.getElementById('parsianPurityCustom');
+const parsianCustomWeight = document.getElementById('parsianCustomWeight');
+
+// default: toggle OFF => no tolerance applied
+let parsianTol = 0;
+parsianTolToggle.addEventListener('click', ()=>{
+  parsianTolToggle.classList.toggle('active');
+  const active = parsianTolToggle.classList.contains('active');
+  parsianTolSelect.style.display = active ? '' : 'none';
+  // when active, apply selected value; when inactive, tolerance = 0
+  parsianTol = active ? (parseInt(parsianTolSelect.value,10) || 0) : 0;
+});
+parsianTolSelect.addEventListener('change', ()=> {
+  // only apply if toggle is active
+  if(parsianTolToggle.classList.contains('active')) parsianTol = parseInt(parsianTolSelect.value,10) || 0;
+});
+
+parsianPurity.addEventListener('change', ()=>{
+  if(parsianPurity.value==='custom'){ parsianPurityCustom.style.display='block'; } else { parsianPurityCustom.style.display='none'; }
+});
+
+function parsianGetPricePerGram(){
+  let p18 = unfmt(price18Input.value);
+  if(isNaN(p18)){
+    const p24 = unfmt(price24Input.value);
+    if(isNaN(p24)) return NaN;
+    p18 = p24 * (18/24);
+    price18Input.value = fmt(Math.round(p18));
+  }
+  const purity = (parsianPurity.value==='custom'? Number(parsianPurityCustom.value) : Number(parsianPurity.value)) || 18;
+  return (p18 * (purity/18));
+}
+
+function renderParsianTable(filteredWeight){
+  const pricePerGram = parsianGetPricePerGram();
+  if(isNaN(pricePerGram)){ parsianTableWrap.innerHTML = '<div style="padding:12px;color:#b00;font-weight:900">لطفاً قیمت ۱۸ یا ۲۴ را در بالا وارد کنید.</div>'; return; }
+  let html = '<table aria-label="جدول پارسیان"><thead><tr><th>وزن (گرم)</th><th>قیمت نهایی</th></tr></thead><tbody>';
+  const list = filteredWeight ? [Number(filteredWeight)] : weights;
+  list.forEach(w=>{
+    const goldCost = +(w * pricePerGram);
+    const wage1 = 50000; const tax = +((goldCost + wage1) * 0.1);
+    const wage2 = 50000;
+    // use parsianTol which is 0 when toggle is OFF
+    const total = Math.round(goldCost + wage1 + tax + wage2 + (parsianTol||0));
+    html += `<tr><td>${w.toFixed(3)}</td><td class="price-cell">${fmt(total)} تومان</td></tr>`;
+  });
+  html += '</tbody></table>';
+  parsianTableWrap.innerHTML = html;
+}
+
+/* ---------- SHAMSH ---------- */
+const shamshCalcBtn = document.getElementById('shamshCalc');
+const shamshTolToggle = document.getElementById('shamshTolToggle');
+const shamshTolSelect = document.getElementById('shamshTol');
+const shamshTableWrap = document.getElementById('shamshTableWrap');
+const shamshPurity = document.getElementById('shamshPurity');
+const shamshPurityCustom = document.getElementById('shamshPurityCustom');
+const shamshCustomWeight = document.getElementById('shamshCustomWeight');
+
+// default: toggle OFF => no tolerance applied
+let shamshTol = 0;
+shamshTolToggle.addEventListener('click', ()=>{
+  shamshTolToggle.classList.toggle('active');
+  const active = shamshTolToggle.classList.contains('active');
+  shamshTolSelect.style.display = active ? '' : 'none';
+  // apply only when active
+  shamshTol = active ? (parseInt(shamshTolSelect.value,10) || 0) : 0;
+});
+shamshTolSelect.addEventListener('change', ()=> {
+  if(shamshTolToggle.classList.contains('active')) shamshTol = parseInt(shamshTolSelect.value,10) || 0;
+});
+
+shamshPurity.addEventListener('change', ()=>{
+  if(shamshPurity.value==='custom'){ shamshPurityCustom.style.display='block'; } else { shamshPurityCustom.style.display='none'; }
+});
+
+function shamshGetPricePerGram(){
+  let p24 = unfmt(price24Input.value);
+  if(isNaN(p24)){
+    const p18 = unfmt(price18Input.value);
+    if(isNaN(p18)) return NaN;
+    p24 = p18 * (24/18);
+    price24Input.value = fmt(Math.round(p24));
+  }
+  const purity = (shamshPurity.value==='custom'? Number(shamshPurityCustom.value) : Number(shamshPurity.value)) || 24;
+  return (p24 * (purity/24));
+}
+
+function renderShamshTable(filteredWeight){
+  const pricePerGram = shamshGetPricePerGram();
+  if(isNaN(pricePerGram)){ shamshTableWrap.innerHTML = '<div style="padding:12px;color:#b00;font-weight:900">لطفاً قیمت ۱۸ یا ۲۴ را در بالا وارد کنید.</div>'; return; }
+  let html = '<table aria-label="جدول شمش"><thead><tr><th>وزن (گرم)</th><th>قیمت نهایی</th></tr></thead><tbody>';
+  const list = filteredWeight ? [Number(filteredWeight)] : weights;
+  list.forEach(w=>{
+    const goldCost = +(w * pricePerGram);
+    const ojrat = (w >= 1.0) ? 250000 : 220000;
+    const base = goldCost + ojrat; const tax = +(base * 0.1);
+    // use shamshTol which is 0 when toggle is OFF
+    const total = Math.round(base + tax + (shamshTol||0));
+    html += `<tr><td>${w.toFixed(3)}</td><td class="price-cell">${fmt(total)} تومان</td></tr>`;
+  });
+  html += '</tbody></table>';
+  shamshTableWrap.innerHTML = html;
+}
+
+/* ---------- FABRICATION ---------- */
+const fabCalcBtn = document.getElementById('fabCalc');
+const fabWeightInput = document.getElementById('fabWeight');
+const fabWageInput = document.getElementById('fabWage');
+const fabProfitInput = document.getElementById('fabProfit');
+const fabFinal = document.getElementById('fabFinal');
+const fabPure = document.getElementById('fabPure');
+const fabWageOut = document.getElementById('fabWageOut');
+const fabProfitOut = document.getElementById('fabProfitOut');
+const fabTaxOut = document.getElementById('fabTax');
+const fabTolOut = document.getElementById('fabTol');
+const fabPurity = document.getElementById('fabPurity');
+const fabPurityCustom = document.getElementById('fabPurityCustom');
+
+fabPurity.addEventListener('change', ()=> fabPurityCustom.style.display = fabPurity.value==='custom' ? 'block' : 'none');
+
+function getPriceForPurity(purity){
+  const p18 = unfmt(price18Input.value);
+  const p24 = unfmt(price24Input.value);
+  if(!isNaN(p18)) return p18*(purity/18);
+  if(!isNaN(p24)) return p24*(purity/24);
+  return NaN;
+}
+
+function fabricateCalculate(){
+  const weight = parseFloat(fabWeightInput.value);
+  const purity = (fabPurity.value==='custom'? Number(fabPurityCustom.value) : Number(fabPurity.value)) || 18;
+  const pricePerGram = getPriceForPurity(purity);
+  const wagePercent = parseFloat(fabWageInput.value);
+  const profitPercent = parseFloat(fabProfitInput.value);
+  if(isNaN(weight) || isNaN(pricePerGram) || isNaN(wagePercent) || isNaN(profitPercent)){
+    fabFinal.textContent = '⚠️ لطفاً مقادیر معتبر وارد کنید.';
+    return;
+  }
+  const pure = +(weight * pricePerGram);
+  const wage = +(pure * (wagePercent/100));
+  const profit = +((pure + wage) * (profitPercent/100));
+  const tax = +(0.1 * (wage + profit));
+  const tol = 0; // fabrication: no tolerance
+  const total = Math.round(pure + wage + profit + tax + tol);
+  fabFinal.textContent = fmt(total) + ' تومان';
+  fabPure.textContent = fmt(Math.round(pure)) + ' تومان';
+  fabWageOut.textContent = fmt(Math.round(wage)) + ' تومان';
+  fabProfitOut.textContent = fmt(Math.round(profit)) + ' تومان';
+  fabTaxOut.textContent = fmt(Math.round(tax)) + ' تومان';
+  fabTolOut.textContent = fmt(tol) + ' تومان';
+  updateTimestamp();
+}
+
+/* ---------- timestamp handling (only top) ---------- */
+const timeToggleTop = document.getElementById('timeToggleTop');
+const topTimestamp = document.getElementById('topTimestamp');
+let topTimeVisible = false;
+timeToggleTop.addEventListener('click', ()=>{
+  timeToggleTop.classList.toggle('active');
+  topTimeVisible = timeToggleTop.classList.contains('active');
+  topTimestamp.style.display = topTimeVisible ? '' : 'none';
+});
+
+/* ---------- theme ---------- */
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', ()=>{
+  themeToggle.classList.toggle('active');
+  document.documentElement.classList.toggle('dark');
+});
+
+/* ---------- active price display ---------- */
+function updateActivePriceDisplay(){
+  const active = document.querySelector('.tab.active').dataset.mode;
+  let pricePerGram = NaN, purity = 18;
+  if(active==='parsian'){ purity = (parsianPurity.value==='custom'? Number(parsianPurityCustom.value): Number(parsianPurity.value)) || 18; const p18 = unfmt(price18Input.value); if(!isNaN(p18)) pricePerGram = p18*(purity/18); else { const p24 = unfmt(price24Input.value); if(!isNaN(p24)) pricePerGram = p24*(purity/24); } }
+  else if(active==='shamsh'){ purity = (shamshPurity.value==='custom'? Number(shamshPurityCustom.value): Number(shamshPurity.value)) || 24; const p24 = unfmt(price24Input.value); if(!isNaN(p24)) pricePerGram = p24*(purity/24); else { const p18 = unfmt(price18Input.value); if(!isNaN(p18)) pricePerGram = p18*(purity/18); } }
+  else { purity = (fabPurity.value==='custom'? Number(fabPurityCustom.value): Number(fabPurity.value)) || 18; const p18 = unfmt(price18Input.value); if(!isNaN(p18)) pricePerGram = p18*(purity/18); else { const p24 = unfmt(price24Input.value); if(!isNaN(p24)) pricePerGram = p24*(purity/24); } }
+  document.getElementById('activePriceDisplay').textContent = isNaN(pricePerGram) ? 'قیمت وارد نشده' : (fmt(Math.round(pricePerGram)) + ' تومان (عیار ' + purity + ')');
+}
+
+/* ---------- timestamp update on actions ---------- */
+function updateTimestamp(){
+  const now = (new Date()).toLocaleString();
+  topTimestamp.textContent = now;
+}
+
+/* ---------- bindings for calc buttons ---------- */
+parsianCalcBtn.addEventListener('click', ()=>{
+  const w = parsianCustomWeight.value.trim();
+  renderParsianTable(w? Number(w) : null);
+  updateTimestamp();
+  updateActivePriceDisplay();
+});
+shamshCalcBtn.addEventListener('click', ()=>{
+  const w = shamshCustomWeight.value.trim();
+  renderShamshTable(w? Number(w) : null);
+  updateTimestamp();
+  updateActivePriceDisplay();
+});
+document.getElementById('fabCalc').addEventListener('click', ()=>{ fabricateCalculate(); updateActivePriceDisplay(); });
+
+/* ---------- bindings for purity custom fields ---------- */
+[parsianPurity, shamshPurity, fabPurity].forEach(s=>{
+  s.addEventListener('change', updateActivePriceDisplay);
+});
+[parsianPurityCustom, shamshPurityCustom, fabPurityCustom].forEach(inp=>{
+  inp.addEventListener('input', updateActivePriceDisplay);
+});
+
+/* ---------- ENTER key support ---------- */
+document.body.addEventListener('keydown', (e)=>{
+  if(e.key === 'Enter'){
+    const active = document.querySelector('.tab.active').dataset.mode;
+    if(active==='parsian') parsianCalcBtn.click();
+    else if(active==='shamsh') shamshCalcBtn.click();
+    else document.getElementById('fabCalc').click();
+  }
+});
+
+/* ---------- init ---------- */
+updateActivePriceDisplay();
+</script>
+</body>
+</html>
